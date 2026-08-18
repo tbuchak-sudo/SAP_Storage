@@ -1,0 +1,57 @@
+<div class="max-w-3xl mx-auto bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-slate-100 fade-in mb-16">
+    <a href="#training" class="text-sm font-bold text-blue-600 hover:underline mb-6 inline-flex items-center">
+        <svg class="w-4 h-4 mr-1 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        Назад до навчального маршруту
+    </a>
+    
+    <div class="flex items-center space-x-3 mt-2 mb-4">
+        <span class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wider">Модуль 1</span>
+        <span class="text-slate-400 text-sm font-medium">Час читання: 6 хв</span>
+    </div>
+    
+    <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6 tracking-tight">Основи складу та SAP</h1>
+    
+    <div class="text-slate-700 leading-relaxed space-y-6 text-base md:text-lg">
+        <div class="bg-blue-50/70 border-l-4 border-blue-600 p-5 rounded-r-2xl">
+            <p class="font-medium text-slate-800">Склад — це не просто місце зберігання коробок, це ключова артерія безперервного виробництва. Кожна фізична дія на складі неминуче супроводжується документальним оформленням у SAP.</p>
+        </div>
+
+        <h3 class="text-2xl font-bold text-slate-900 pt-4">1. Роль складу у виробничому ланцюжку</h3>
+        <p>Складський працівник забезпечує три головні речі:</p>
+        <ul class="list-disc pl-6 space-y-2 text-slate-600">
+            <li><strong>Своєчасність:</strong> матеріали мають бути на лінії до того, як вони знадобляться машинці чи збірнику.</li>
+            <li><strong>Достовірність обліку:</strong> те, що лежить на полиці, повинно збігатися з цифрами в системі SAP до останньої одиниці.</li>
+            <li><strong>Контроль якості:</strong> перевірка статусів (вільний, заблокований, брак).</li>
+        </ul>
+
+        <h3 class="text-2xl font-bold text-slate-900 pt-4">2. Що таке «Матеріал» у SAP?</h3>
+        <p>Кожне найменування сировини, комплектуючих чи готової продукції має свій унікальний <strong>код матеріалу</strong> (наприклад, <code>100500</code>). Це єдиний спільний ключ для всіх відділів підприємства — від закупівель до бухгалтерії та складу.</p>
+        <p>Кожен матеріал містить основні дані:</p>
+        <ul class="list-disc pl-6 space-y-2 text-slate-600">
+            <li><strong>Одиниця виміру (ОВ):</strong> штуки (шт), кілограми (кг), метри (м).</li>
+            <li><strong>Група матеріалів:</strong> до якої категорії належить товар.</li>
+            <li><strong>Тип зберігання:</strong> специфіка поводження (наприклад, потребує сухих умов або охолодження).</li>
+        </ul>
+
+        <h3 class="text-2xl font-bold text-slate-900 pt-4">3. Топологія та ієрархія складу</h3>
+        <p>У системі SAP склад має чітку ієрархічну структуру, яку треба чітко розуміти:</p>
+        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 space-y-3 font-mono text-sm text-slate-800">
+            <div>🏢 <strong>Завод (Plant):</strong> наприклад, <code>1000</code> (Головне підприємство)</div>
+            <div class="pl-4">└── 📦 <strong>Склад (Storage Location):</strong> наприклад, <code>1010</code> (Основний склад сировини)</div>
+            <div class="pl-8">└── 📍 <strong>Складомісце / Комірка (Storage Bin):</strong> наприклад, <code>A-03-12</code> (Ряд А, стійка 03, полиця 12)</div>
+        </div>
+
+        <h3 class="text-2xl font-bold text-slate-900 pt-4">4. Головне правило складського обліку</h3>
+        <div class="bg-amber-50 border-l-4 border-amber-500 p-5 rounded-r-2xl text-amber-900">
+            <p class="font-bold mb-1">Золоте правило:</p>
+            <p>«Спочатку документ у SAP — потім фізичний рух. Або синхронно в момент видачі». Не можна переміщувати коробки без фіксації, інакше система «втратить» товар.</p>
+        </div>
+    </div>
+
+    <div class="mt-12 pt-6 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <span class="text-sm text-slate-400 font-medium">Модуль 1 із 5 завершено</span>
+        <button onclick="App.completeModule('basics')" class="w-full sm:w-auto px-8 py-4 bg-green-600 text-white font-bold rounded-xl hover:bg-green-700 transition shadow-lg shadow-green-200 flex items-center justify-center space-x-2">
+            <span>✓ Завершити модуль та перейти до COOIS</span>
+        </button>
+    </div>
+</div>
