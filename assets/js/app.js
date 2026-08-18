@@ -1,7 +1,7 @@
 const App = {
     progress: JSON.parse(localStorage.getItem('sap_storage_progress')) || { basics: true },
     
-    // Вбудованіfallback-шаблони на випадок відсутності або блокування файлів у секціях
+    // Вбудовані шаблони для всіх розділів та SAP-модулів (працює миттєво без зовнішніх fetch-запитів)
     templates: {
         'home': `
             <div class="max-w-5xl mx-auto fade-in">
@@ -115,6 +115,72 @@ const App = {
                 <h2 class="text-2xl font-bold mb-3 text-slate-900">Підсумковий тест</h2>
                 <p class="text-slate-600 mb-6">Перевірте свої знання складської логіки SAP.</p>
                 <button onclick="alert('Тест успішно пройдено на 100%!')" class="px-8 py-3 bg-green-600 hover:bg-green-700 text-white font-bold rounded-xl transition shadow-lg">Скласти тест</button>
+            </div>
+        `,
+        'sap/basics': `
+            <div class="max-w-3xl mx-auto bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-slate-100 fade-in">
+                <a href="#training" class="text-sm font-bold text-blue-600 hover:underline mb-6 inline-block">← Назад до навчального маршруту</a>
+                <span class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Модуль 1</span>
+                <h1 class="text-3xl font-extrabold text-slate-900 mt-3 mb-4">Основи складу та SAP</h1>
+                <div class="text-slate-700 leading-relaxed space-y-4 text-base">
+                    <p>Склад — це не просто місце зберігання коробок, це ключова ланка безперервного виробництва. Кожна фізична дія обов'язково повинна супроводжуватись документальним оформленням у SAP.</p>
+                    <h3 class="text-xl font-bold text-slate-900 pt-4">Що таке матеріал?</h3>
+                    <p>Кожен товар, сировина чи запчастина у SAP має свій унікальний код матеріалу (наприклад, 100500). Це єдиний ключ до розуміння залишків, вартості та місця зберігання.</p>
+                    <h3 class="text-xl font-bold text-slate-900 pt-4">Топологія складу</h3>
+                    <p>Склад ділиться на типи складів та складомісця (комірки). Знання точної комірки гарантує швидкий підбір товарів без втрати часу.</p>
+                </div>
+                <div class="mt-10 pt-6 border-t border-slate-100 flex justify-end">
+                    <button onclick="App.completeModule('basics')" class="px-8 py-3 bg-green-600 text-white font-bold rounded-xl hover:bg-green-700 transition shadow-lg">✓ Завершити модуль</button>
+                </div>
+            </div>
+        `,
+        'sap/coois': `
+            <div class="max-w-3xl mx-auto bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-slate-100 fade-in">
+                <a href="#training" class="text-sm font-bold text-blue-600 hover:underline mb-6 inline-block">← Назад до навчального маршруту</a>
+                <span class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Модуль 2</span>
+                <h1 class="text-3xl font-extrabold text-slate-900 mt-3 mb-4">Транзакція COOIS</h1>
+                <div class="text-slate-700 leading-relaxed space-y-4 text-base">
+                    <p><strong>COOIS</strong> — це головна транзакція для аналізу виробничих замовлень. Вона показує, ЩО потрібно виробити, КОЛИ і ЯКІ компоненти необхідні.</p>
+                    <h3 class="text-xl font-bold text-slate-900 pt-4">Для чого вона потрібна складу?</h3>
+                    <p>Склад використовує COOIS для прогнозування та підготовки матеріалів перед запуском виробничих процесів.</p>
+                    <h3 class="text-xl font-bold text-slate-900 pt-4">Алгоритм роботи</h3>
+                    <p>1. Введіть номер замовлення.<br>2. Перейдіть на вкладку "Компоненти".<br>3. Звірте "Потрібну кількість" та "Видану кількість". Різниця між ними — ваш план видачі.</p>
+                </div>
+                <div class="mt-10 pt-6 border-t border-slate-100 flex justify-end">
+                    <button onclick="App.completeModule('coois')" class="px-8 py-3 bg-green-600 text-white font-bold rounded-xl hover:bg-green-700 transition shadow-lg">✓ Завершити модуль</button>
+                </div>
+            </div>
+        `,
+        'sap/cogi': `
+            <div class="max-w-3xl mx-auto bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-slate-100 fade-in">
+                <a href="#training" class="text-sm font-bold text-blue-600 hover:underline mb-6 inline-block">← Назад до навчального маршруту</a>
+                <span class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Модуль 3</span>
+                <h1 class="text-3xl font-extrabold text-slate-900 mt-3 mb-4">Транзакція COGI</h1>
+                <div class="text-slate-700 leading-relaxed space-y-4 text-base">
+                    <p><strong>COGI</strong> фіксує записи руху матеріалів, які система намагалася провести автоматично, але сталася помилка (наприклад, через відсутність залишку на момент випуску продукції).</p>
+                    <h3 class="text-xl font-bold text-slate-900 pt-4">Головне правило складу</h3>
+                    <p>Список в COGI завжди має бути порожнім! Будь-який запис тут означає перекошування облікових залишків.</p>
+                    <h3 class="text-xl font-bold text-slate-900 pt-4">Порядок дій</h3>
+                    <p>Знайти помилку -> Прочитати текст -> Виправити залишок (через MB11 або переміщення) -> Повторити проведення в COGI.</p>
+                </div>
+                <div class="mt-10 pt-6 border-t border-slate-100 flex justify-end">
+                    <button onclick="App.completeModule('cogi')" class="px-8 py-3 bg-green-600 text-white font-bold rounded-xl hover:bg-green-700 transition shadow-lg">✓ Завершити модуль</button>
+                </div>
+            </div>
+        `,
+        'sap/zebwm': `
+            <div class="max-w-3xl mx-auto bg-white p-8 md:p-10 rounded-3xl shadow-sm border border-slate-100 fade-in">
+                <a href="#training" class="text-sm font-bold text-blue-600 hover:underline mb-6 inline-block">← Назад до навчального маршруту</a>
+                <span class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Модуль 4</span>
+                <h1 class="text-3xl font-extrabold text-slate-900 mt-3 mb-4">Транзакція ZEBWM</h1>
+                <div class="text-slate-700 leading-relaxed space-y-4 text-base">
+                    <p><strong>ZEBWM</strong> — це зв'язок між системою та фізичним складом. Вона дозволяє побачити, де саме система "думає", що лежить матеріал.</p>
+                    <h3 class="text-xl font-bold text-slate-900 pt-4">Що перевіряти в ZEBWM</h3>
+                    <p>1. Комірку зберігання<br>2. Кількість<br>3. Статус якості (вільний чи заблокований)</p>
+                </div>
+                <div class="mt-10 pt-6 border-t border-slate-100 flex justify-end">
+                    <button onclick="App.completeModule('zebwm')" class="px-8 py-3 bg-green-600 text-white font-bold rounded-xl hover:bg-green-700 transition shadow-lg">✓ Завершити модуль</button>
+                </div>
             </div>
         `
     },
