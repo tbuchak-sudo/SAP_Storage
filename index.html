@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAP Storage - Навчальний портал складської логістики</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Сайдбар -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>📦 SAP Storage</h2>
+                <span class="badge">v1.0</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#training" class="nav-link active" data-section="training.html">📚 Навчальний маршрут</a>
+                <a href="#transactions" class="nav-link" data-section="transactions.html">⚙️ SAP Транзакції</a>
+                <a href="#practice" class="nav-link" data-section="practice.html">💻 Симуляція кейсів</a>
+                <a href="#tests" class="nav-link" data-section="tests.html">📝 Тести й перевірка</a>
+                <a href="#reference" class="nav-link" data-section="reference.html">🔍 Швидкий довідник</a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="progress-box">
+                    <span>Прогрес навчання:</span>
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill" style="width: 0%;"></div>
+                    </div>
+                    <span id="progressText">0% завершено</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Основний контент -->
+        <main class="main-content">
+            <header class="top-header">
+                <h1 id="pageTitle">Навчальний маршрут</h1>
+                <div class="user-profile">Оператор складу</div>
+            </header>
+            <div id="contentArea" class="content-body">
+                <!-- Динамічний контент завантажується сюди -->
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
