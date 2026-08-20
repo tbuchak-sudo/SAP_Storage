@@ -1,87 +1,113 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAP Storage — Навчальний портал</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .fade-in { animation: fadeIn 0.25s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-    </style>
-</head>
-<body class="bg-slate-50 text-slate-900 flex h-screen overflow-hidden">
-
-    <!-- Mobile Backdrop -->
-    <div id="sidebar-backdrop" onclick="toggleMobileMenu()" class="fixed inset-0 bg-slate-900/50 z-30 hidden md:hidden"></div>
-
-    <!-- Sidebar -->
-    <aside id="sidebar" class="fixed md:static inset-y-0 left-0 w-72 bg-white border-r border-slate-200 flex flex-col z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 flex-shrink-0">
-        <div class="p-6 md:p-8 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center text-white font-extrabold text-xl shadow-lg shadow-blue-200">S</div>
-                <div>
-                    <span class="font-extrabold text-xl text-slate-900 block leading-none">Storage</span>
-                    <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest mt-1 block">LMS Portal</span>
-                </div>
-            </div>
-            <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-400 hover:text-slate-600">
-                ✕
-            </button>
-        </div>
-        
+<!-- ... existing code ... -->
         <nav class="flex-1 px-4 space-y-1.5 overflow-y-auto">
             <a href="#home" class="nav-link flex items-center px-4 py-3 rounded-xl font-semibold text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition">🏠 Головна</a>
             <a href="#training" class="nav-link flex items-center px-4 py-3 rounded-xl font-semibold text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition">📚 Навчання</a>
             <a href="#directory" class="nav-link flex items-center px-4 py-3 rounded-xl font-semibold text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition">🔍 Довідник</a>
-            <a href="#practice" class="nav-link flex items-center px-4 py-3 rounded-xl font-semibold text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition">🧪 Практика</a>
+            <a href="#procedures" class="nav-link flex items-center px-4 py-3 rounded-xl font-semibold text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition">🧪 Порядки роботи</a>
             <a href="#tests" class="nav-link flex items-center px-4 py-3 rounded-xl font-semibold text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition">📝 Тести</a>
             
             <!-- Новий пункт меню: Калькулятор зарплати -->
             <a href="https://tbuchak-sudo.github.io/fishnet/" 
-               class="flex items-center px-4 py-3 rounded-xl font-semibold text-slate-600 hover:bg-green-50 hover:text-green-700 transition">
-                💰 Калькулятор зарплати
-            </a>
-        </nav>
+<!-- ... existing code ... -->
+```
 
-        <div class="p-5 m-4 bg-slate-50 rounded-2xl border border-slate-100">
-            <div class="flex justify-between items-end mb-2">
-                <span class="text-xs font-extrabold text-slate-500 uppercase tracking-wider">Прогрес</span>
-                <span id="sidebar-progress-text" class="text-sm font-bold text-slate-900">0%</span>
-            </div>
-            <div class="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
-                <div id="sidebar-progress-bar" class="bg-green-500 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
-            </div>
-        </div>
-    </aside>
-
-    <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
-        <!-- Mobile Header Bar -->
-        <header class="md:hidden bg-white border-b border-slate-200 p-4 flex items-center justify-between z-20 flex-shrink-0">
-            <button onclick="toggleMobileMenu()" class="p-2 text-slate-700 hover:bg-slate-100 rounded-lg">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
-            <span class="font-extrabold text-lg text-slate-900">SAP Storage</span>
-            <div class="w-8"></div>
-        </header>
-
-        <!-- Dynamic Content Window -->
-        <div id="app-content" class="flex-1 overflow-y-auto p-4 md:p-8 lg:p-12">
-            <!-- Fallback content instantly available without network fetch -->
-            <div class="max-w-5xl mx-auto space-y-8 fade-in">
-                <div class="bg-slate-900 text-white p-8 md:p-12 rounded-3xl shadow-xl relative overflow-hidden">
-                    <h1 class="text-3xl md:text-5xl font-extrabold mb-4">SAP Storage LMS</h1>
-                    <p class="text-slate-300 text-lg max-w-2xl">Корпоративний навчальний портал складської логіки та SAP. Завантаження основних модулів...</p>
+```javascript:Мозок додатку:assets/js/app.js
+// ... existing code ...
+                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="text-xl font-bold mb-2">03. COGI</h3>
+                    <p class="text-slate-500 text-sm mb-4">Обробка помилок руху матеріалів.</p>
+                    <button onclick="App.openModule('sap/cogi')" class="text-blue-600 font-bold hover:underline">Вивчити →</button>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="text-xl font-bold mb-2">04. ZEBWM</h3>
+                    <p class="text-slate-500 text-sm mb-4">Робота з одиницями обробки.</p>
+                    <button onclick="App.openModule('sap/zebwm')" class="text-blue-600 font-bold hover:underline">Вивчити →</button>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="text-xl font-bold mb-2">05. MB / ZMB</h3>
+                    <p class="text-slate-500 text-sm mb-4">Рухи матеріалів та звіти.</p>
+                    <button onclick="App.openModule('sap/mb')" class="text-blue-600 font-bold hover:underline">Вивчити →</button>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="text-xl font-bold mb-2">06. FIFO</h3>
+                    <p class="text-slate-500 text-sm mb-4">Принцип ротації партій.</p>
+                    <button onclick="App.openModule('sap/fifo')" class="text-blue-600 font-bold hover:underline">Вивчити →</button>
                 </div>
             </div>
-        </div>
-    </main>
+        `,
 
-    <script src="./assets/js/app.js?v=2"></script>
-</body>
-</html>
+        'directory': `
+            <h1 class="text-3xl font-extrabold mb-6">🔍 Довідник</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-lg mb-3 border-b pb-2">Категорії</h3>
+                    <ul class="space-y-2 text-slate-700">
+                        <li><a href="#dir/tcodes" class="text-blue-600 hover:underline font-medium">SAP транзакції</a></li>
+                        <li><a href="#dir/materials" class="text-blue-600 hover:underline font-medium">Коди матеріалів</a></li>
+                        <li><a href="#dir/storage_types" class="text-blue-600 hover:underline font-medium">Типи складів</a></li>
+                        <li><a href="#dir/bins" class="text-blue-600 hover:underline font-medium">Комірки</a></li>
+                        <li><a href="#dir/movements" class="text-blue-600 hover:underline font-medium">Рухи</a></li>
+                        <li><a href="#dir/acronyms" class="text-blue-600 hover:underline font-medium">Скорочення</a></li>
+                    </ul>
+                </div>
+            </div>
+        `,
+
+        // ТУТ ЗМІНЕНО: Практика -> Порядки роботи
+        'procedures': `
+            <h1 class="text-3xl font-extrabold mb-6">🧪 Порядки роботи</h1>
+            <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm">
+                <p class="text-slate-600 mb-6 text-lg">Реальні робочі ситуації, алгоритми дій та виробничі кейси.</p>
+                <div class="space-y-4">
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 hover:border-blue-300 transition-colors cursor-pointer" onclick="App.openModule('procedures/case001')">
+                        <div class="font-bold text-slate-800 text-lg">Кейс 001: Немає матеріалу</div>
+                        <div class="text-sm text-slate-500 mt-1">Алгоритм дій при фізичній відсутності компонента на складі.</div>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 hover:border-blue-300 transition-colors cursor-pointer" onclick="App.openModule('procedures/case002')">
+                        <div class="font-bold text-slate-800 text-lg">Кейс 002: COGI-помилка</div>
+                        <div class="text-sm text-slate-500 mt-1">Виправлення системної помилки при списанні.</div>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 hover:border-blue-300 transition-colors cursor-pointer" onclick="App.openModule('procedures/case003')">
+                        <div class="font-bold text-slate-800 text-lg">Кейс 003: Невідповідність залишку</div>
+                        <div class="text-sm text-slate-500 mt-1">Що робити, коли SAP показує одне, а по факту інше.</div>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 hover:border-blue-300 transition-colors cursor-pointer" onclick="App.openModule('procedures/case004')">
+                        <div class="font-bold text-slate-800 text-lg">Кейс 004: Неправильна комірка</div>
+                        <div class="text-sm text-slate-500 mt-1">Матеріал знаходиться не на своєму місці (помилка розміщення).</div>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 hover:border-blue-300 transition-colors cursor-pointer" onclick="App.openModule('procedures/case005')">
+                        <div class="font-bold text-slate-800 text-lg">Кейс 005: Порушення FIFO</div>
+                        <div class="text-sm text-slate-500 mt-1">Як діяти при виявленні старих партій та порушенні ротації.</div>
+                    </div>
+                </div>
+            </div>
+        `,
+
+        'tests': `
+            <h1 class="text-3xl font-extrabold mb-6">📝 Тести</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="font-bold text-lg mb-2">Основи складу</h3>
+                    <p class="text-sm text-slate-500 mb-4">Базові поняття та топологія складу.</p>
+                    <button class="text-blue-600 font-bold text-sm hover:underline">Почати тест →</button>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="font-bold text-lg mb-2">Транзакція COOIS</h3>
+                    <p class="text-sm text-slate-500 mb-4">Перевірка знань щодо роботи з виробничими замовленнями.</p>
+                    <button class="text-blue-600 font-bold text-sm hover:underline">Почати тест →</button>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 class="font-bold text-lg mb-2">Помилки COGI</h3>
+                    <p class="text-sm text-slate-500 mb-4">Тест на вміння виправляти помилки руху матеріалів.</p>
+                    <button class="text-blue-600 font-bold text-sm hover:underline">Почати тест →</button>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow bg-blue-50 border-blue-200">
+                    <h3 class="font-bold text-lg mb-2 text-blue-900">Підсумковий екзамен</h3>
+                    <p class="text-sm text-slate-600 mb-4">Комплексна перевірка знань з усіх модулів та порядків роботи.</p>
+                    <button class="text-blue-700 font-extrabold text-sm hover:underline">Здати екзамен →</button>
+                </div>
+            </div>
+        `,
+
+        // --- Демонстрація одного навчального модуля (за твоєю структурою) ---
+// ... existing code ...
